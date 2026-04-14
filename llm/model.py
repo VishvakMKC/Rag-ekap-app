@@ -9,5 +9,5 @@ class LLM:
         )
 
     def invoke(self, prompt):
-        response = self.generator(prompt)[0]["generated_text"]
-        return response
+        response = self.generator(prompt, return_full_text=False)[0]["generated_text"]
+        return response.strip()

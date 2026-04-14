@@ -12,15 +12,15 @@ def generate_answer(state):
     context = "\n".join(state["retrieved_docs"])
 
     prompt = f"""
-    
-    Answer ONLY from the context below and return the suitable answer alone, don't include any extra text.
+Answer ONLY with a single direct response.
+Do NOT include the context, question, or any extra explanation.
+Do NOT use markdown, code blocks, or backticks.
 
-    Context:
-    {context}
+Context:
+{context}
 
-    Question:
-    {state['query']}
-    """
-
+Question:
+{state['query']}
+"""
     response = llm.invoke(prompt)
     return {"answer": response}
